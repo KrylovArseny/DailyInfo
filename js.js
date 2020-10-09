@@ -18,13 +18,13 @@ function soap() {
   }
 
 
-  xmlhttp.setRequestHeader('Host', 'www.cbr.ru');
+
   xmlhttp.setRequestHeader('Content-Type', 'application/soap+xml; charset=utf-8');
-  xmlhttp.setRequestHeader('Content-Length', '3495');
   xmlhttp.setRequestHeader('SOAPAction', '"http://web.cbr.ru/GetLatestDateTime"');
   xmlhttp.send(sr);
 
 }
+
 
 console.log('d44433ge')
 
