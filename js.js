@@ -28,5 +28,6 @@ function soap() {
   xmlhttp.send(xml);
   // ...Include Google and Terracoder JS code here...
 }
+console.log('dfge')
 
 soap()
