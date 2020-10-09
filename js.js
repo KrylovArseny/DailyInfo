@@ -1,4 +1,5 @@
-var url = "http://www.cbr.ru/DailyInfoWebServ/DailyInfo.asmx";
+function soap() {
+  var url = "http://www.cbr.ru/DailyInfoWebServ/DailyInfo.asmx";
 var soapXml = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:web=\"http://www.webserviceX.NET/\"> "+
          "<soapenv:Header/> "+
          "<soapenv:Body> "+
@@ -27,3 +28,8 @@ var soapXml = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap
         // var str2json = x2js.xml_str2json(data.data);
         // return str2json;
         return data.data;
+    }
+}
+console.log('dfge')
+
+soap()
