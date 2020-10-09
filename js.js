@@ -14,7 +14,7 @@ function soap() {
   xmlhttp.onreadystatechange = function () {
       if (xmlhttp.readyState == 4) {
           if (xmlhttp.status == 200) {
-              console.log(xmlhttp.response)
+              console.log(xmlhttp)
           }
       }
   }
