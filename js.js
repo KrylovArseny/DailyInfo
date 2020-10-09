@@ -1,6 +1,6 @@
 function soap() {
   var xmlhttp = new XMLHttpRequest();
-  xmlhttp.open('POST', '/DailyInfoWebServ/DailyInfo.asmx', true);
+  xmlhttp.open('POST', '/DailyInfoWebServ/DailyInfo.asmx', false);
 
   // build SOAP request
   var sr =
