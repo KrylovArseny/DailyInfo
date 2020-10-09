@@ -22,7 +22,7 @@ function soap() {
 
 
   xmlhttp.setRequestHeader('Content-Type', 'text/xml; charset=utf-8');
-  xmlhttp.setRequestHeader('SOAPAction', '"http://web.cbr.ru/GetLatestDateTime"');
+  xmlhttp.setRequestHeader('SOAPAction', '"http://web.cbr.ru/GetCursOnDateXML"');
   xmlhttp.send(sr);
 
 }
