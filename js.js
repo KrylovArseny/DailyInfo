@@ -1,18 +1,13 @@
 function soap() {
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.open('POST', '/DailyInfoWebServ/DailyInfo.asmx', false);
-
-  // build SOAP request
   var sr =
       '<?xml version="1.0" encoding="utf-8"?>' +
-      '<soapenv:Envelope ' + 
-          'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ' +
-          'xmlns:xsd="http://www.w3.org/2001/XMLSchema" ' +
-          'xmlns:soap12="http://www.w3.org/2003/05/soap-envelope>' +
-          '<soap12:Body>' +
+        '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">' +
+          '<soap:Body>' +
               '<GetLatestDateTime xmlns="http://web.cbr.ru/" />'+
-          '</soap12:Body>' +
-      '</soap12:Envelope>';
+          '</soap:Body>' +
+        '</soap:Envelope>';
 
   xmlhttp.onreadystatechange = function () {
       if (xmlhttp.readyState == 4) {
@@ -21,12 +16,16 @@ function soap() {
           }
       }
   }
-  // Send the POST request
+
+
+  xmlhttp.setRequestHeader('Host', 'www.cbr.ru');
   xmlhttp.setRequestHeader('Content-Type', 'application/soap+xml; charset=utf-8');
+  xmlhttp.setRequestHeader('Content-Length', '3495');
+  xmlhttp.setRequestHeader('SOAPAction', '"http://web.cbr.ru/GetLatestDateTime"');
   xmlhttp.send(sr);
-  // send request
-  // ...
+
 }
+
 console.log('d44433ge')
 
 soap()
