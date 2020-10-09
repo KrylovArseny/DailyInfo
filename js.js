@@ -12,7 +12,7 @@ function soap() {
   xmlhttp.onreadystatechange = function () {
       if (xmlhttp.readyState == 4) {
           if (xmlhttp.status == 200) {
-              alert('done. use firebug/console to see network response');
+              console.log(xmlhttp)
           }
       }
   }
@@ -27,6 +27,6 @@ function soap() {
 
 
 
-console.log('r12t')
+console.log('r1112t')
 
 soap()
