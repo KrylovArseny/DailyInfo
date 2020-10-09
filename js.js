@@ -19,11 +19,12 @@ function soap() {
 
 
 
-  xmlhttp.setRequestHeader('Content-Type', 'application/soap+xml; charset=utf-8');
+  xmlhttp.setRequestHeader('Content-Type', 'text/xml; charset=utf-8');
   xmlhttp.setRequestHeader('SOAPAction', '"http://web.cbr.ru/GetLatestDateTime"');
   xmlhttp.send(sr);
 
 }
+
 
 
 console.log('rt')
