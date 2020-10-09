@@ -6,7 +6,7 @@ function soap() {
         '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">' +
           '<soap:Body>' +
                 '<GetCursOnDateXML xmlns="http://web.cbr.ru/">'+
-                    '<On_date>dateTime</On_date>'+
+                    '<On_date>new Date()</On_date>'+
                 '</GetCursOnDateXML>'+
           '</soap:Body>' +
         '</soap:Envelope>';
@@ -30,6 +30,6 @@ function soap() {
 
 
 
-console.log('1')
+console.log('2')
 
 soap()
