@@ -1,34 +1,32 @@
 function soap() {
-  var url = "http://www.cbr.ru/DailyInfoWebServ/DailyInfo.asmx";
-var soapXml = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:web=\"http://www.webserviceX.NET/\"> "+
-         "<soapenv:Header/> "+
-         "<soapenv:Body> "+
-         "<web:GetQuote> "+
-         "<web:symbol></web:symbol> "+
-         "</web:GetQuote> "+
-         "</soapenv:Body> "+
-         "</soapenv:Envelope> ";
-
-    return $http({
-          url: url,  
-          method: "POST",  
-          data: soapXml,  
-          headers: {  
-              "Content-Type": "text/xml; charset=utf-8"
-          }  
-      })
-      .then(callSoapComplete)
-      .catch(function(message){
-         return message;
-      });
-
-    function callSoapComplete(data, status, headers, config) {
-        // Convert to JSON Ojbect from xml
-        // var x2js = new X2JS();
-        // var str2json = x2js.xml_str2json(data.data);
-        // return str2json;
-        return data.data;
+  var symbol = "MSFT";
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.open("POST", "/DailyInfoWebServ/DailyInfo.asmx HTTP/1.1", true);
+  xmlhttp.onreadystatechange = function () {
+    if (xmlhttp.readyState == 4) {
+      alert(xmlhttp.responseText);
+      // http://www.terracoder.com convert XML to JSON
+      var json = XMLObjectifier.xmlToJSON(xmlhttp.responseXML);
+      var result = json.Body[0].GetQuoteResponse[0].GetQuoteResult[0].Text;
+      // Result text is escaped XML string, convert string to XML object then convert to JSON object
+      json = XMLObjectifier.xmlToJSON(XMLObjectifier.textToXML(result));
+      alert(symbol + ' Stock Quote: $' + json.Stock[0].Last[0].Text);
     }
+  }
+  xmlhttp.setRequestHeader("SOAPAction", "http://web.cbr.ru/GetCursOnDateXML");
+  xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
+  var xml = '<?xml version="1.0" encoding="utf-8"?>' +
+    '<?xml version="1.0" encoding="utf-8"?>' +
+    '<soapenv:Envelope ' +
+    'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ' +
+    'xmlns:xsd="http://www.w3.org/2001/XMLSchema" ' +
+    'xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">' +
+    '<soap12:Body>' +
+    '<GetLatestDateTime xmlns="http://web.cbr.ru/" />' +
+    '</soap12:Body>' +
+    '</soapenv:Envelope>';
+  xmlhttp.send(xml);
+  // ...Include Google and Terracoder JS code here...
 }
 console.log('dfge')
 
